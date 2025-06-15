@@ -1,0 +1,93 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  display: flex; /* шаг 1 для правильно закрепленного  footer */
+  flex-direction: column; /* шаг 2 для правильно закрепленного footer */
+  min-height: 100vh; /* шаг 3 для правильно закрепленного footer */
+}
+
+.global-container {
+  /*шаг 4 для правильно закрепленного footer*/
+  flex: 1;
+}
+
+.header {
+  position: fixed;
+  width: 100%;
+  height: 69.38px;
+  background-color: #e3fef7;
+  display: flex;
+  justify-content: space-between;
+}
+.title-portal {
+  font-weight: bold;
+}
+
+i > span {
+  font-family: Arial, Helvetica, sans-serif;
+  /*font-weight: 400;*/
+  font-size: 16px;
+  text-align: center;
+  color: #000;
+}
+
+i > title {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.header-logo-row-grid {
+  width: 100%;
+  margin: 8px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+}
+
+.text-logo {
+  display: flex;
+  flex-direction: column; /* Располагает детей сверху вниз */
+  align-items: flex-start; /* Выравнивание по левому краю */
+  line-height: 1.2; /* расстояние между строками */
+}
+
+.middle-cell {
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  flex-grow: 1;
+  flex-shrink: 1000;
+  flex-basis: auto;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: azure;
+}
+
+.header-service {
+  display: flex;
+  gap: 20px; /* расстояние между иконками */
+  align-items: center;
+}
+
+.service-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  color: #000;
+}
+
+.service-item i {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+footer {
+  width: 1200px;
+  height: 483px;
+  background-color: #545454;
+  box-shadow: 0 -2px 5px 0 rgba(0, 0, 0, 0.3);
+}
