@@ -10,15 +10,14 @@ body {
 }
 
 .global-container {
-  /*шаг 4 для правильно закрепленного footer*/
-  flex: 1;
+  flex: 1; /*шаг 4 для правильно закрепленного footer*/
 }
-
+/*ХЕДЕР*/
 .header {
   position: fixed;
   width: 100%;
   height: 69.38px;
-  background-color: #e3fef7;
+  background-color: white;
   display: flex;
   justify-content: space-between;
 }
@@ -28,7 +27,6 @@ body {
 
 i > span {
   font-family: Arial, Helvetica, sans-serif;
-  /*font-weight: 400;*/
   font-size: 16px;
   text-align: center;
   color: #000;
@@ -66,6 +64,14 @@ i > title {
   background-color: azure;
 }
 
+@media screen and (max-width: 768px) {
+  .middle-cell {
+    min-width: 0;
+    flex-shrink: 1;
+    overflow: hidden;
+  }
+}
+
 .header-service {
   display: flex;
   gap: 20px; /* расстояние между иконками */
@@ -85,9 +91,156 @@ i > title {
   margin-bottom: 4px;
 }
 
+/*МЕЙН*/
+.big-image {
+  background-image: url("./ОБРАЗЕЦ/shutterstock_1549382906.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 450px;
+  margin: 0;
+  padding: 0;
+}
+
+.main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: sans-serif;
+}
+.main-title {
+  grid-column: 1 / -1;
+  font-size: 1rem;
+  font-weight: bold;
+  
+}
+.card-grid {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding-left: 110px;
+  padding-right: 110px;
+  box-sizing: border-box;
+}
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 0;
+}
+.red-arrow{
+  position: relative;
+}
+.red-arrow::before {
+  content:"→";
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 36px;
+  height: 36px;
+  background-color: red;
+  
+}
+.copyright {
+  font-size: 0.75rem;
+  color: gray;
+}
+.card-title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.card-text {
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+
+/*ФУТЕР*/
 footer {
-  width: 1200px;
-  height: 483px;
+  width: 100%;
   background-color: #545454;
   box-shadow: 0 -2px 5px 0 rgba(0, 0, 0, 0.3);
+}
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+  color: white;
+  padding: 20px;
+}
+
+.footer-section {
+  overflow: hidden;
+  list-style: none;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding-left: 0; /* чтобы убрать отступ слева */
+  margin-left: 0; /* обычно тоже убирают, чтобы не было смещения */
+}
+
+/* Убираем стандартную стрелку у <summary> всегда */
+.footer-section summary {
+  font-weight: bold;
+  padding: 0px;
+  cursor: pointer;
+  list-style: none; /* убрать маркер */
+}
+
+/* Убираем стрелку браузера слева */
+.footer-section summary::-webkit-details-marker {
+  display: none;
+}
+
+/* По умолчанию стрелок нет */
+.footer-section summary::after {
+  content: "";
+}
+
+/* При сужении экрана: один столбец и показываем стрелку вниз справа */
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-section summary::after {
+    content: "▼";
+    float: right;
+  }
+}
+@media (max-width: 768px) {
+  .footer-section ul li {
+    background-color: #000;
+  }
+}
+img {
+  width: 120px;
+  height: 40px;
+
+  top: 17px;
+  left: 24px;
+  margin-bottom: 20px;
+}
+
+.footer-logo-row {
+  grid-column: 1 / -1; /* занимает всю ширину grid */
+  margin-bottom: 20px;
+  margin-top: 10px;
+  height: 22px;
+}
+
+.footer-clime {
+  grid-column: 1 / -1; /* растягивает на всю ширину grid */
 }
