@@ -20,6 +20,7 @@ body {
   background-color: white;
   display: flex;
   justify-content: space-between;
+  z-index: 1000;
 }
 .title-portal {
   font-weight: bold;
@@ -42,7 +43,7 @@ i > title {
   width: 100%;
   margin: 8px;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr auto auto;
   align-items: center;
 }
 
@@ -69,6 +70,27 @@ i > title {
     min-width: 0;
     flex-shrink: 1;
     overflow: hidden;
+  }
+}
+
+/*настройки для средней секции со ссылками */
+.header-nav-links {
+  display: flex;
+  gap: 20px;
+  font-size: 20px;
+  font-family: Arial, sans-serif;
+  margin-top: 20px;
+  margin-right: 25px;
+}
+
+.header-nav-links span {
+  cursor: pointer;
+  white-space: nowrap;
+}
+/* Скрываем эту ячейку с ссылками  при сужении экрана */
+@media (max-width: 1024px) {
+  .header-nav-links {
+    display: none;
   }
 }
 
@@ -101,6 +123,15 @@ i > title {
   height: 450px;
   margin: 0;
   padding: 0;
+  z-index: -1;
+  position: relative;
+}
+.poster-title {
+  position: absolute;
+  top: 320px;
+  left: 110px;
+  color: white;
+  font-size: 48px;
 }
 
 .main-container {
@@ -113,7 +144,6 @@ i > title {
   grid-column: 1 / -1;
   font-size: 1rem;
   font-weight: bold;
-  
 }
 .card-grid {
   margin-top: 30px;
@@ -130,11 +160,11 @@ i > title {
   border-radius: 5px;
   margin-bottom: 0;
 }
-.red-arrow{
+.red-arrow {
   position: relative;
 }
 .red-arrow::before {
-  content:"→";
+  content: "→";
   font-size: 18px;
   font-weight: bold;
   color: white;
@@ -142,14 +172,13 @@ i > title {
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   position: absolute;
   top: 0;
   right: 0;
   width: 36px;
   height: 36px;
   background-color: red;
-  
 }
 .copyright {
   font-size: 0.75rem;
@@ -164,7 +193,107 @@ i > title {
   font-size: 0.9rem;
   margin-top: 5px;
 }
+.fa-solid fa-arrow-right {
+  font-size: 15px;
+}
+.mehr {
+  color: rgba(23, 161, 196, 0.788);
+}
 
+/*Cерое поле с колонками ссылок (почти! аналог нижнего футера*/
+/*красный квадратик с белой стрелкой - отдельный для этого поля */
+
+.footer-logo-row0 {
+  grid-column: 1 / -1; /* занимает всю ширину grid */
+  margin-bottom: 20px;
+  margin-top: 10px;
+  height: 22px;
+}
+
+.red-arrow0::before {
+  content: "↑";
+}
+
+.red-arrow0 {
+  width: 25px;
+  height: 25px;
+  background-color: red;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  right: 25px;
+  top: 25px;
+  text-align: center;
+}
+.seitenanfang {
+  position: absolute;
+  right: 60px;
+  top: 15px;
+  color: black;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container0 {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+  color: black;
+  padding: 20px;
+  width: 100%;
+  background-color: #54545428;
+  box-shadow: 0 -2px 5px 0 rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.footer-section {
+  overflow: hidden;
+  list-style: none;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding-left: 0; /* чтобы убрать отступ слева */
+  margin-left: 0; /* обычно тоже убирают, чтобы не было смещения */
+}
+
+/* Убираем стандартную стрелку у <summary> всегда */
+.footer-section summary {
+  font-weight: bold;
+  padding: 0px;
+  cursor: pointer;
+  list-style: none; /* убрать маркер */
+}
+
+/* Убираем стрелку браузера слева */
+.footer-section summary::-webkit-details-marker {
+  display: none;
+}
+
+/* По умолчанию стрелок нет */
+.footer-section summary::after {
+  content: "";
+}
+
+/* При сужении экрана: один столбец и показываем стрелку вниз справа */
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-section summary::after {
+    content: "▼";
+    float: right;
+  }
+}
+@media (max-width: 768px) {
+  .footer-section ul li {
+    background-color: #000;
+  }
+}
+
+/*конец серого поля*/
 
 /*ФУТЕР*/
 footer {
